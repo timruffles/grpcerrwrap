@@ -27,7 +27,7 @@ func useGRPCWrapErr() error {
 	err := someApplicationMethod()
 	if err != nil {
 		// we want to respond with a specific-error code, but not lose stack-traces for
-		// our callers and interceptors. So we can use grpcwraperr
+		// our callers and interceptors. So we can use grpcerrwrap
 		err = grpcerrwrap.Code(err, codes.InvalidArgument)
 	}
 	return err

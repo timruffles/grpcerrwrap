@@ -3,7 +3,7 @@
 gRPC wraps an original error while retaining the error-chain.
 
 ```go
-wrapped := grpcwraperr.Code(err, codes.InvalidArgument)
+wrapped := grpcerrwrap.Code(err, codes.InvalidArgument)
 ```
 
 The returned `wrapped` above will perform the same in `errors.Is` and `errors.As` checks as `err`. As always,
@@ -14,7 +14,7 @@ calling client would receive `codes.InvalidArgument`:
 ```
 func (s *SomeGRPCServer) SomeMethod(req *somepb.SomeRequest) (*somepb.SomeResponse, error) {
     // ...
-    return grpcwraperr.Code(err, codes.InvalidArgument)
+    return grpcerrwrap.Code(err, codes.InvalidArgument)
 }
 ```
 
@@ -23,18 +23,18 @@ write an interceptor that sniffed for the `pkg/errors` stack-trace interface and
 
 ## Full Example
 
-Here is a [runnable example](example_test.go) of how `grpcwraperr` retains the wrapped error's original error-chain, while working
+Here is a [runnable example](example_test.go) of how `grpcerrwrap` retains the wrapped error's original error-chain, while working
 with gRPC's methods.
 
 ```go
-package grpcwraperr_test
+package grpcerrwrap_test
 
 import (
 	"errors"
 	"fmt"
 
 	pkgerrors "github.com/pkg/errors"
-	"grpcwraperr"
+	"grpcerrwrap"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -56,8 +56,8 @@ func useGRPCWrapErr() error {
 	err := someApplicationMethod()
 	if err != nil {
 		// we want to respond with a specific-error code, but not lose stack-traces for
-		// our callers and interceptors. So we can use grpcwraperr
-		err = grpcwraperr.Code(err, codes.InvalidArgument)
+		// our callers and interceptors. So we can use grpcerrwrap
+		err = grpcerrwrap.Code(err, codes.InvalidArgument)
 	}
 	return err
 }
