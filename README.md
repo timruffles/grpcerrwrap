@@ -92,7 +92,7 @@ func getStackHead(err error) string {
 
 ## Dependencies
 
-Only depends on google.golang.org/grpc. The rest are only dependencies of the _test package, so will not end up in your
+Only depends on google.golang.org/grpc/codes and google.golang.org/grpc/status. The rest are only dependencies of the _test package, so will not end up in your
 binaries.
 
 ## Compatability
