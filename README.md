@@ -89,3 +89,9 @@ func getStackHead(err error) string {
 	return "no stack trace"
 }
 ```
+
+## Dependencies
+
+Only depends on google.golang.org/grpc. The rest are only dependencies of the _test package, so will not end up in your
+binaries.
+
