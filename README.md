@@ -95,3 +95,6 @@ func getStackHead(err error) string {
 Only depends on google.golang.org/grpc. The rest are only dependencies of the _test package, so will not end up in your
 binaries.
 
+## Compatability
+
+Works with Go 1.13+ - which is [when error-wrapping landed](https://blog.golang.org/go1.13-errors).
