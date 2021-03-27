@@ -1,4 +1,4 @@
-module grpcwraperr
+module grpcerrwrap
 
 go 1.13
 

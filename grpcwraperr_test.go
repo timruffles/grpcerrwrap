@@ -1,4 +1,4 @@
-package grpcwraperr
+package grpcerrwrap
 
 import (
 	"errors"

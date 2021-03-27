@@ -1,15 +1,15 @@
-package grpcwraperr_test
+package grpcerrwrap_test
 
 import (
 	"errors"
 	"fmt"
 
 	pkgerrors "github.com/pkg/errors"
-	"grpcwraperr"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
+	"grpcerrwrap"
 )
 
 func ExampleCode() {
@@ -28,7 +28,7 @@ func useGRPCWrapErr() error {
 	if err != nil {
 		// we want to respond with a specific-error code, but not lose stack-traces for
 		// our callers and interceptors. So we can use grpcwraperr
-		err = grpcwraperr.Code(err, codes.InvalidArgument)
+		err = grpcerrwrap.Code(err, codes.InvalidArgument)
 	}
 	return err
 }

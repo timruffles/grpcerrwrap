@@ -1,4 +1,4 @@
-package grpcwraperr
+package grpcerrwrap
 
 import (
 	"google.golang.org/grpc/codes"
